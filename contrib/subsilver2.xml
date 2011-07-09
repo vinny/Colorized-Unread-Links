@@ -15,14 +15,14 @@
 				<email><![CDATA[vinny@suportephpbb.com.br]]></email>
 			</author>
 		</author-group>
-		<mod-version>1.0.0</mod-version>
+		<mod-version>1.1.0</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
-			<target-version>3.0.8</target-version>
+			<target-version>3.0.9</target-version>
 		</installation>
 		<link-group>
-			<link type="parent" href="../install_mod.xml" lang="en">Main Install</link>
+			<link type="parent" href="../install.xml" lang="en">Main Install</link>
 		</link-group>
 	</header>
 	<action-group>
@@ -33,7 +33,7 @@
 				<!-- IF forumrow.MODERATORS -->]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[<a class="forumlink" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>]]></inline-find>
-					<inline-action type="replace-with"><![CDATA[ <a class="forumlink"<!-- IF COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF --> href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>]]></inline-action>
+					<inline-action type="replace-with"><![CDATA[ <a class="forumlink"<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF --> href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -42,7 +42,7 @@
 				<find><![CDATA[<p class="topictitle">{NEWEST_POST_IMG} {topicrow.ATTACH_ICON_IMG} <a href="{topicrow.U_VIEW_TOPIC}">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[href="{topicrow.U_VIEW_TOPIC}"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -51,7 +51,7 @@
 				<find><![CDATA[{searchresults.ATTACH_ICON_IMG} <a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -60,7 +60,7 @@
 				<find><![CDATA[<a href="{messagerow.U_VIEW_PM}">{messagerow.SUBJECT}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[href="{messagerow.U_VIEW_PM}"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -69,11 +69,11 @@
 				<find><![CDATA[{topicrow.ATTACH_ICON_IMG} <!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><b>{topicrow.TOPIC_TYPE}</b> <!-- ENDIF --><a title="{L_POSTED}: {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
 		<diy-instructions lang="en"><![CDATA[1. Purge the cache and refresh the template.
-2. Set the settings for 'Colorized Unread Links' in ACP > General tab > Board features.]]></diy-instructions>
+2. Set the settings for 'Colorized Unread Links' in ACP > MODs tab > Colorized Unread Links.]]></diy-instructions>
 	</action-group>
 </mod>

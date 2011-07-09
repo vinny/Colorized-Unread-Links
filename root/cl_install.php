@@ -1,11 +1,11 @@
 <?php
 
 /**
-*
+* @author _Vinny_ vinny@suportephpbb.com.br http://www.suportephpbb.com.br
 * @author RMcGirr83 (Rich McGirr) rmcgirr83@gmail.com
-* @package colorized_links
+* @package colorized_unread_links
 * @version $Id cl_install.php
-* @copyright (c) 2011 RMcGirr83 ( http://www.rmcgirr83.org/ )
+* @copyright (c) 2011 _Vinny_, RMcGirr83 ( http://www.rmcgirr83.org/ )
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -65,6 +65,17 @@ $versions = array(
          array('colorized_links'),
       ),
    ),
+   
+   
+   // Version 1.1.0
+   '1.1.0'   => array(
+      // Lets add a config setting
+      'config_add' => array(
+         array('enable_colorized_links'),
+      ),
+   ),
+   
+   
 );
 
 // Include the UMIF Auto file and everything else will be handled automatically.

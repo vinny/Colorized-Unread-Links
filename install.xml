@@ -15,11 +15,11 @@
 				<email><![CDATA[vinny@suportephpbb.com.br]]></email>
 			</author>
 		</author-group>
-		<mod-version>1.0.0</mod-version>
+		<mod-version>1.1.0</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
-			<target-version>3.0.8</target-version>
+			<target-version>3.0.9</target-version>
 		</installation>
 		<link-group>
 			<link type="template" href="contrib/subsilver2.xml" lang="en">Subsilver2 template</link>
@@ -27,23 +27,19 @@
 	</header>
 	<action-group>
 		<copy>
-			<file from="root/cl_install.php" to="cl_install.php" />
+			<file from="root/includes/acp/acp_colorized_unread_links.php" to="includes/acp/acp_colorized_unread_links.php" />
+			<file from="root/includes/acp/info/acp_colorized_unread_links.php" to="includes/acp/info/acp_colorized_unread_links.php" />
+			<file from="root/language/en/mods/info_acp_colorized_unread_links.php" to="language/en/mods/info_acp_colorized_unread_links.php" />
 			<file from="root/umil/*.*" to="umil/*.*" />
+			<file from="root/cl_install.php" to="cl_install.php" />
 		</copy>
 		<open src="includes/functions.php">
 			<edit>
 				<find><![CDATA[		'S_USER_NEW_PRIVMSG'			=> $user->data['user_new_privmsg'],]]></find>
 				<action type="before-add"><![CDATA[		//mod: Colorized Unread Links
+		'S_ENABLE_COLOR_UNREAD_LINKS'	=> ($config['enable_colorized_links']) ? true : false ,
 		'COLOR_UNREAD_LINKS'			=> !empty($config['colorized_links']) ? $config['colorized_links'] : false,
 		//mod: Colorized Unread Links]]></action>
-			</edit>
-		</open>
-		<open src="includes/acp/acp_board.php">
-			<edit>
-				<find><![CDATA[						'allow_quick_reply'		=> array('lang' => 'ALLOW_QUICK_REPLY',		'validate' => 'bool',	'type' => 'custom', 'method' => 'quick_reply', 'explain' => true),]]></find>
-				<action type="after-add"><![CDATA[						//mod: Colorized Unread Links
-						'colorized_links'		=> array('lang' => 'COLORIZED_LINKS',        'validate' => 'string', 'type' => 'text:7:7', 'explain' => true),
-						//mod: Colorized Unread Links]]></action>
 			</edit>
 		</open>
 		<open src="includes/ucp/ucp_pm_viewfolder.php">
@@ -54,25 +50,16 @@
 					//mod: Colorized Unread Links]]></action>
 			</edit>
 		</open>
-		<open src="language/en/acp/board.php">
-			<edit>
-				<find><![CDATA[	'BOARD_PM_EXPLAIN'			=> 'Enable private messaging for all users.',]]></find>
-				<action type="after-add"><![CDATA[	//mod: Colorized Unread Links
-	'COLORIZED_LINKS'			=> 'Colorized Unread Links',
-	'COLORIZED_LINKS_EXPLAIN'	=> 'Insert the hexadecimal code for the desired color. Example: #FF0000',
-	//mod: Colorized Unread Links]]></action>
-			</edit>
-		</open>
 		<open src="styles/prosilver/template/forumlist_body.html">
 			<edit>
 				<find><![CDATA[<a href="{forumrow.U_VIEWFORUM}" class="forumtitle">{forumrow.FORUM_NAME}</a><br />]]></find>
-				<action type="replace-with"><![CDATA[<a href="{forumrow.U_VIEWFORUM}" class="forumtitle"<!-- IF COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->>{forumrow.FORUM_NAME}</a><br />]]></action>
+				<action type="replace-with"><![CDATA[<a href="{forumrow.U_VIEWFORUM}" class="forumtitle"<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->>{forumrow.FORUM_NAME}</a><br />]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/mcp_forum.html">
 			<edit>
 				<find><![CDATA[<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>]]></find>
-				<action type="replace-with"><![CDATA[<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle"<!-- IF COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->>{topicrow.TOPIC_TITLE}</a>]]></action>
+				<action type="replace-with"><![CDATA[<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle"<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->>{topicrow.TOPIC_TITLE}</a>]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/search_results.html">
@@ -80,14 +67,14 @@
 				<find><![CDATA[<a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a> {searchresults.ATTACH_ICON_IMG}]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/ucp_pm_viewfolder.html">
 			<edit>
 				<find><![CDATA[<a href="{messagerow.U_VIEW_PM}" class="topictitle">{messagerow.SUBJECT}</a>]]></find>
-				<action type="replace-with"><![CDATA[<a href="{messagerow.U_VIEW_PM}" class="topictitle"<!-- IF COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->>{messagerow.SUBJECT}</a>]]></action>
+				<action type="replace-with"><![CDATA[<a href="{messagerow.U_VIEW_PM}" class="topictitle"<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->>{messagerow.SUBJECT}</a>]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/viewforum_body.html">
@@ -95,13 +82,13 @@
 				<find><![CDATA[<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}"><!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}">{NEWEST_POST_IMG}</a> <!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
 		<php-installer><![CDATA[cl_install.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[1. Run cl_install.php
 2. Purge the cache and refresh the template.
-3. Set the settings for 'Colorized Unread Links' in ACP > General tab > Board features.]]></diy-instructions>
+3. Set the settings for 'Colorized Unread Links' in ACP > MODs tab > Colorized Unread Links.]]></diy-instructions>
 	</action-group>
 </mod>
