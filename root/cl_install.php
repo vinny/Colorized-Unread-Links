@@ -39,10 +39,10 @@ if (!file_exists($phpbb_root_path . 'umil/umil_auto.' . $phpEx))
 * 'UNINSTALL_' . $mod_name
 * 'UNINSTALL_' . $mod_name . '_CONFIRM'
 */
-$language_file = '';
+$language_file = 'mods/info_acp_colorized_unread_links';
 
 // The name of the mod to be displayed during installation.
-$mod_name = 'Colorized Unread Links';
+$mod_name = 'ACP_COLORIZED';
 
 /*
 * The name of the config variable which will hold the currently installed version
@@ -73,8 +73,19 @@ $versions = array(
       'config_add' => array(
          array('enable_colorized_links'),
       ),
-   ),
    
+   // Now add the module
+	'module_add' => array(
+		// First, lets add a new category named ACP_COLORIZED to ACP_CAT_DOT_MODS
+		array('acp', 'ACP_CAT_DOT_MODS', 'ACP_COLORIZED'),
+		// next let's add our module
+		array('acp', 'ACP_COLORIZED', array(
+				'module_basename'	=> 'colorized_unread_links',
+				'modes'				=> array('settings'),
+			),
+		),
+	),
+), 
    
 );
 

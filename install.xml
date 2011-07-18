@@ -27,6 +27,7 @@
 	</header>
 	<action-group>
 		<copy>
+			<file from="root/adm/style/acp_colorized.html" to="adm/style/acp_colorized.html" />
 			<file from="root/includes/acp/acp_colorized_unread_links.php" to="includes/acp/acp_colorized_unread_links.php" />
 			<file from="root/includes/acp/info/acp_colorized_unread_links.php" to="includes/acp/info/acp_colorized_unread_links.php" />
 			<file from="root/language/en/mods/info_acp_colorized_unread_links.php" to="language/en/mods/info_acp_colorized_unread_links.php" />

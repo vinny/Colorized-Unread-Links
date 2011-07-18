@@ -36,7 +36,7 @@ class acp_colorized_unread_links
 		$action	= request_var('action', '');
 		$submit = (isset($_POST['submit'])) ? true : false;
 
-		$form_key = 'acp_board';
+		$form_key = 'acp_colorized';
 		add_form_key($form_key);
 		
 		switch ($mode)
@@ -100,17 +100,21 @@ class acp_colorized_unread_links
 
 		if ($submit)
 		{
-			if ($config['enable_colorized_links'] == 1 && $config['colorized_links'] == '')
+			if ($config['enable_colorized_links'] == 1 && $config['colorized_links'] == true)
+			{
+				trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($this->u_action));
+			}
+			else if ($config['enable_colorized_links'] == 1 && $config['colorized_links'] == '')
 			{
 				$error[] = $user->lang['ACP_COLOR_FILL_FIELD'];
 			}
-			else if ($config['enable_colorized_links'] == 0)
+			else
 			{
 				trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($this->u_action));
 			}
 		}
 
-		$this->tpl_name = 'acp_board';
+		$this->tpl_name = 'acp_colorized';
 		$this->page_title = $display_vars['title'];
 
 		$template->assign_vars(array(

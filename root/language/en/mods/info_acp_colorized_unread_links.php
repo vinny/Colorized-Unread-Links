@@ -33,6 +33,9 @@ $lang = array_merge($lang, array(
 	'ACP_COLORIZED_LINKS_COLOR'	=> 'Change the color',
 	'ACP_COLORIZED_LINKS_COLOR_EXPLAIN'=> 'Insert the hexadecimal code for the desired color. Example: #FF0000',
 	'ACP_COLOR_FILL_FIELD'		=> 'Error. Please fill the field with the color for the links.',
+	
+	// install
+	'COLORIZED_INSTALL' 		=> 'Colorized Unread Links',
 
 	));
 ?>
