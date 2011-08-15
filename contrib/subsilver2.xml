@@ -32,8 +32,8 @@
 				<p class="forumdesc">{forumrow.FORUM_DESC}</p>
 				<!-- IF forumrow.MODERATORS -->]]></find>
 				<inline-edit>
-					<inline-find><![CDATA[<a class="forumlink" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>]]></inline-find>
-					<inline-action type="replace-with"><![CDATA[ <a class="forumlink"<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF --> href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>]]></inline-action>
+					<inline-find><![CDATA[class="forumlink"]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -73,7 +73,6 @@
 				</inline-edit>
 			</edit>
 		</open>
-		<diy-instructions lang="en"><![CDATA[1. Purge the cache and refresh the template.
-2. Set the settings for 'Colorized Unread Links' in ACP > MODs tab > Colorized Unread Links.]]></diy-instructions>
+		<diy-instructions lang="en"><![CDATA[Purge the cache and refresh the Subsilver2 template.]]></diy-instructions>
 	</action-group>
 </mod>
