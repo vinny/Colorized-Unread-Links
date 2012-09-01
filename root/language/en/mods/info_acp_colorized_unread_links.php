@@ -3,7 +3,7 @@
 *
 * @package Colorized Unread Links [English]
 * @version $Id$
-* @copyright (c) 2011 _Vinny_ vinny@suportephpbb.com.br http://www.suportephpbb.com.br
+* @copyright (c) 2012 _Vinny_ vinny@suportephpbb.com.br http://www.suportephpbb.com.br
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -35,7 +35,8 @@ $lang = array_merge($lang, array(
 	'ACP_COLOR_FILL_FIELD'		=> 'Error. Please fill the field with the color for the links.',
 	
 	// install
-	'COLORIZED_INSTALL' 		=> 'Colorized Unread Links',
+	'COLORIZED_INSTALL' 		=> 'Colorized Unread Links MOD',
+	'COLORIZED_INSTALL_EXPLAIN' => '',
 
 	));
 ?>

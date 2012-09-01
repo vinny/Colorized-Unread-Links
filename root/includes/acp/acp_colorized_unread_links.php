@@ -3,7 +3,7 @@
 *
 * @package Colorized Unread Links
 * @version $Id$
-* @copyright (c) 2011 _Vinny_ vinny@suportephpbb.com.br http://www.suportephpbb.com.br
+* @copyright (c) 2012 _Vinny_ vinny@suportephpbb.com.br http://www.suportephpbb.com.br
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 * @ Based on acp_board.php
@@ -31,7 +31,7 @@ class acp_colorized_unread_links
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
 		global $cache;
 
-		$user->add_lang('acp/board');
+		$user->add_lang(array('acp/board', 'mods/info_acp_colorized_unread_links'));
 
 		$action	= request_var('action', '');
 		$submit = (isset($_POST['submit'])) ? true : false;

@@ -8,6 +8,7 @@
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
 		<title lang="en"><![CDATA[Colorized Unread Links]]></title>
 		<description lang="en"><![CDATA[This MOD colorizes unread Forum/Topic/Search Result/Private Message/MCP Topics Links.]]></description>
+		<author-notes lang="en"><![CDATA[This version now supports colorize subforums and for the great contribution in the development of version 1.1.1, I leave a big thanks to phpBB community members Neo and Raimon.]]></author-notes>
 		<author-group>
 			<author>
 				<username><![CDATA[_Vinny_]]></username>
@@ -15,14 +16,15 @@
 				<email><![CDATA[vinny@suportephpbb.com.br]]></email>
 			</author>
 		</author-group>
-		<mod-version>1.1.0</mod-version>
+		<mod-version>1.1.1</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
-			<target-version>3.0.9</target-version>
+			<target-version>3.0.11</target-version>
 		</installation>
 		<link-group>
 			<link type="template" href="contrib/subsilver2.xml" lang="en">Subsilver2 template</link>
+			<link type="contrib" href="contrib/update_1.1.0_to_1.1.1.xml" lang="en">Update 1.1.0 to 1.1.1</link>
 		</link-group>
 	</header>
 	<action-group>
@@ -38,8 +40,24 @@
 			<edit>
 				<find><![CDATA[		'S_USER_NEW_PRIVMSG'			=> $user->data['user_new_privmsg'],]]></find>
 				<action type="before-add"><![CDATA[		//mod: Colorized Unread Links
-		'S_ENABLE_COLOR_UNREAD_LINKS'	=> (isset($config['enable_colorized_links'])) ? true : false,
+		'S_ENABLE_COLOR_UNREAD_LINKS'	=> (!empty($config['enable_colorized_links'])) ? true : false,
 		'COLOR_UNREAD_LINKS'		=> !empty($config['colorized_links']) ? $config['colorized_links'] : false,
+		//mod: Colorized Unread Links]]></action>
+			</edit>
+		</open>
+		<open src="includes/functions_display.php">
+			<edit>
+				<find><![CDATA[			$s_subforums_list[] = '<a href="' . $subforum['link'] . '" class="subforum ' . (($subforum['unread']) ? 'unread' : 'read') . '" title="' . (($subforum['unread']) ? $user->lang['UNREAD_POSTS'] : $user->lang['NO_UNREAD_POSTS']) . '">' . $subforum['name'] . '</a>';]]></find>
+				<action type="replace-with"><![CDATA[		//mod: Colorized Unread Links
+		if (!empty($config['enable_colorized_links']) == true && $subforum['unread'])
+		{
+			$colorized_links = 'style="color: ' . $config['colorized_links'] .';"';
+			$s_subforums_list[] = '<a href="' . $subforum['link'] . '" class="subforum ' . (($subforum['unread']) ? 'unread' : 'read') . '" title="' . (($subforum['unread']) ? $user->lang['UNREAD_POSTS'] : $user->lang['NO_UNREAD_POSTS']) . '"><span ' . $colorized_links . '>' . $subforum['name'] . '</span></a>';
+		}
+		else
+		{
+			$s_subforums_list[] = '<a href="' . $subforum['link'] . '" class="subforum ' . (($subforum['unread']) ? 'unread' : 'read') . '" title="' . (($subforum['unread']) ? $user->lang['UNREAD_POSTS'] : $user->lang['NO_UNREAD_POSTS']) . '">' . $subforum['name'] . '</a>';
+		}
 		//mod: Colorized Unread Links]]></action>
 			</edit>
 		</open>
@@ -99,6 +117,6 @@
 		<php-installer><![CDATA[cl_install.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[1. Run cl_install.php
 2. Purge the cache and refresh the template.
-3. Set the settings for 'Colorized Unread Links' in ACP > MODs tab > Colorized Unread Links.]]></diy-instructions>
+3. Set the settings for the "Colorized Unread Links" under the ".MODS" tab.]]></diy-instructions>
 	</action-group>
 </mod>
