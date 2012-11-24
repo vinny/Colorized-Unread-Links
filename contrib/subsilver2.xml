@@ -33,7 +33,7 @@
 				<!-- IF forumrow.MODERATORS -->]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="forumlink"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -42,7 +42,7 @@
 				<find><![CDATA[<p class="topictitle">{NEWEST_POST_IMG} {topicrow.ATTACH_ICON_IMG} <a href="{topicrow.U_VIEW_TOPIC}">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[href="{topicrow.U_VIEW_TOPIC}"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -51,7 +51,7 @@
 				<find><![CDATA[{searchresults.ATTACH_ICON_IMG} <a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -60,7 +60,7 @@
 				<find><![CDATA[<a href="{messagerow.U_VIEW_PM}">{messagerow.SUBJECT}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[href="{messagerow.U_VIEW_PM}"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -69,7 +69,7 @@
 				<find><![CDATA[{topicrow.ATTACH_ICON_IMG} <!-- IF topicrow.S_HAS_POLL or topicrow.S_TOPIC_MOVED --><b>{topicrow.TOPIC_TYPE}</b> <!-- ENDIF --><a title="{L_POSTED}: {topicrow.FIRST_POST_TIME}" href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>

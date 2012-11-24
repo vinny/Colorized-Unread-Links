@@ -18,7 +18,7 @@ class acp_colorized_unread_links_info
 		return array(
 			'filename'	=> 'acp_colorized_unread_links',
 			'title'		=> 'ACP_COLORIZED',
-			'version'	=> '1.1.1',
+			'version'	=> '1.1.2',
 			'modes'		=> array(
 				'settings'		=> array('title' => 'ACP_COLORIZED_SETTINGS', 'auth' => 'acl_a_board', 'cat' => array('ACP_COLORIZED')),
 			),

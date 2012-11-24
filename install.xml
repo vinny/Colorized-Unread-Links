@@ -50,9 +50,9 @@
 			<edit>
 				<find><![CDATA[			$s_subforums_list[] = '<a href="' . $subforum['link'] . '" class="subforum ' . (($subforum['unread']) ? 'unread' : 'read') . '" title="' . (($subforum['unread']) ? $user->lang['UNREAD_POSTS'] : $user->lang['NO_UNREAD_POSTS']) . '">' . $subforum['name'] . '</a>';]]></find>
 				<action type="replace-with"><![CDATA[		//mod: Colorized Unread Links
-		if (!empty($config['enable_colorized_links']) == true && $subforum['unread'])
+		if (!empty($config['enable_colorized_links']) && $subforum['unread'])
 		{
-			$colorized_links = 'style="color: ' . $config['colorized_links'] .';"';
+			$colorized_links = 'style="color: #' . $config['colorized_links'] .';"';
 			$s_subforums_list[] = '<a href="' . $subforum['link'] . '" class="subforum ' . (($subforum['unread']) ? 'unread' : 'read') . '" title="' . (($subforum['unread']) ? $user->lang['UNREAD_POSTS'] : $user->lang['NO_UNREAD_POSTS']) . '"><span ' . $colorized_links . '>' . $subforum['name'] . '</span></a>';
 		}
 		else
@@ -75,7 +75,7 @@
 				<find><![CDATA[<a href="{forumrow.U_VIEWFORUM}" class="forumtitle">{forumrow.FORUM_NAME}</a><br />]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="forumtitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -84,7 +84,7 @@
 				<find><![CDATA[<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -93,7 +93,7 @@
 				<find><![CDATA[<a href="{searchresults.U_VIEW_TOPIC}" class="topictitle">{searchresults.TOPIC_TITLE}</a> {searchresults.ATTACH_ICON_IMG}]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -102,7 +102,7 @@
 				<find><![CDATA[<a href="{messagerow.U_VIEW_PM}" class="topictitle">{messagerow.SUBJECT}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>
@@ -111,7 +111,7 @@
 				<find><![CDATA[<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}"><!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}">{NEWEST_POST_IMG}</a> <!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>]]></find>
 				<inline-edit>
 					<inline-find><![CDATA[class="topictitle"]]></inline-find>
-					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
+					<inline-action type="after-add"><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: #{COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></inline-action>
 				</inline-edit>
 			</edit>
 		</open>

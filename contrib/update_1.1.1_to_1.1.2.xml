@@ -28,13 +28,67 @@
 	</header>
 	<action-group>
 		<copy>
-			<file from="root/adm/style/acp_colorized.html" to="adm/style/acp_colorized.html" />
 			<file from="root/includes/acp/acp_colorized_unread_links.php" to="includes/acp/acp_colorized_unread_links.php" />
 			<file from="root/includes/acp/info/acp_colorized_unread_links.php" to="includes/acp/info/acp_colorized_unread_links.php" />
 			<file from="root/language/en/mods/info_acp_colorized_unread_links.php" to="language/en/mods/info_acp_colorized_unread_links.php" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 			<file from="root/cl_install.php" to="cl_install.php" />
 		</copy>
+		<open src="includes/functions_display.php">
+			<edit>
+				<find><![CDATA[		if (!empty($config['enable_colorized_links']) == true && $subforum['unread'])
+		{
+			$colorized_links = 'style="color: ' . $config['colorized_links'] .';"';]]></find>
+				<action type="replace-with"><![CDATA[		if (!empty($config['enable_colorized_links']) && $subforum['unread'])
+		{
+			$colorized_links = 'style="color: #' . $config['colorized_links'] .';"';]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/forumlist_body.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and forumrow.S_UNREAD_FORUM --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[{COLOR_UNREAD_LINKS}]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[#{COLOR_UNREAD_LINKS}]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/mcp_forum.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[{COLOR_UNREAD_LINKS}]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[#{COLOR_UNREAD_LINKS}]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/search_results.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and searchresults.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[{COLOR_UNREAD_LINKS}]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[#{COLOR_UNREAD_LINKS}]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/ucp_pm_viewfolder.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and messagerow.S_PM_UNREAD --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[{COLOR_UNREAD_LINKS}]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[#{COLOR_UNREAD_LINKS}]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/viewforum_body.html">
+			<edit>
+				<find><![CDATA[<!-- IF S_ENABLE_COLOR_UNREAD_LINKS and topicrow.S_UNREAD_TOPIC --> style="color: {COLOR_UNREAD_LINKS};"<!-- ENDIF -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[{COLOR_UNREAD_LINKS}]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[#{COLOR_UNREAD_LINKS}]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
 		<php-installer><![CDATA[cl_install.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[1. Run cl_install.php
 2. Purge the cache and refresh the template.

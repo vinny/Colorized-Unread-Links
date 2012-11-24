@@ -38,6 +38,7 @@ class acp_colorized_unread_links
 
 		$form_key = 'acp_colorized';
 		add_form_key($form_key);
+		$swatch = append_sid("{$phpbb_admin_path}swatch.$phpEx", 'form=acp_colorized&amp;name=colorized_links');
 		
 		switch ($mode)
 		{
@@ -47,7 +48,8 @@ class acp_colorized_unread_links
 					'vars'	=> array(
 						'legend1'				=> 'ACP_COLORIZED_SETTINGS',
 						'enable_colorized_links'         => array('lang' => 'ACP_COLORIZED_ENABLE',         'validate' => 'bool',   'type' => 'radio:yes_no', 'explain' => true),
-						'colorized_links'		=> array('lang' => 'ACP_COLORIZED_LINKS_COLOR',        'validate' => 'string', 'type' => 'text:7:7', 'explain' => true),
+
+						'colorized_links'		=> array('lang' => 'ACP_COLORIZED_LINKS_COLOR',			'validate' => 'string',	'type' => 'text:6:6', 'explain' => true, 'append' => '&nbsp;&nbsp;<span>[ <a href="' . $swatch . '" onclick="popup(this.href, 636, 150, \'_swatch\'); return false">' . $user->lang['COLOUR_SWATCH'] . '</a> ]</span>'),
 
 						'legend2'					=> 'ACP_SUBMIT_CHANGES',
 					)
@@ -88,7 +90,6 @@ class acp_colorized_unread_links
 			{
 				continue;
 			}
-
 
 			$this->new_config[$config_name] = $config_value = $cfg_array[$config_name];
 

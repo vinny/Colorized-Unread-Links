@@ -36,10 +36,9 @@ $versions = array(
    '1.0.0'   => array(
       // Lets add a config setting
       'config_add' => array(
-         array('colorized_links', '#FF0000'),
+         array('colorized_links', 'FF0000'),
       ),
    ),
-
 
    // Version 1.1.0
    '1.1.0'   => array(
